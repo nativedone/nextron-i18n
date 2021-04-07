@@ -1,23 +1,16 @@
 import React from "react";
-import Head from "next/head";
-import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
-function IndexPage() {
+import Header from "../components/Header";
+
+export default function IndexPage() {
+  const { t } = useTranslation("home");
+  const description = t("description");
+
   return (
-    <React.Fragment>
-      <Head>
-        <title>Index IndexPage - Nextron (with-typescript)</title>
-      </Head>
-      <div>
-        <p>
-          ⚡ Index IndexPage - Electron + Next.js ⚡ -
-          <Link href="/home">
-            <a>Go to home page</a>
-          </Link>
-        </p>
-      </div>
-    </React.Fragment>
+    <>
+      <Header />
+      <p>{description}</p>
+    </>
   );
 }
-
-export default IndexPage;

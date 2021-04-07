@@ -1,24 +1,22 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
-function Home() {
+import Header from "../components/Header";
+// TODO: delete this file after setting the initial path for the electron app
+// See 'background.ts' file
+export default function Home() {
+  const { t } = useTranslation("home");
+  const description = t("description");
+  const linkName = t("more-examples");
+
   return (
-    <React.Fragment>
-      <Head>
-        <title>Home - Nextron (with-typescript)</title>
-      </Head>
-      <div>
-        <p>
-          ⚡ Electron + Next.js ⚡ -
-          <Link href="/next">
-            <a>Go to next page</a>
-          </Link>
-        </p>
-        <img src="/images/logo.png" />
-      </div>
-    </React.Fragment>
+    <>
+      <Header />
+      <p>{description}</p>
+      <Link href="/more-examples">
+        <a>{linkName}</a>
+      </Link>
+    </>
   );
-};
-
-export default Home;
+}
